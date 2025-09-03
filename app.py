@@ -30,7 +30,7 @@ elif selected_item == "歴史":
     user_message = st.text_input(label="歴史に関する質問を入力してください。")
 
 if st.button("実行"):
-    # 入力チェック（即時）
+    # 入力チェック
     if not user_message:
         st.error("質問内容を入力してください。")
     else:
@@ -45,7 +45,6 @@ if st.button("実行"):
         # client = OpenAI(timeout=10.0)
         
         # StreamlitのSecretsからAPIキーを読み込む
-        # アプリのSettings > Secretsで設定したキー名 (例: "OPENAI_API_KEY") を使います。
         api_key = st.secrets["OPENAI_API_KEY"]
 
         # 読み込んだAPIキーを使ってクライアントを初期化
