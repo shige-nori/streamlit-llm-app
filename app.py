@@ -36,13 +36,20 @@ if st.button("実行"):
     else:
         st.divider()
 
-        # 環境変数OPENAI_API_KEYを読み込む
-        from dotenv import load_dotenv
-        load_dotenv()
-
-        # OpenAIクライアントの初期化
         from openai import OpenAI
-        client = OpenAI(timeout=10.0)
+        # 環境変数OPENAI_API_KEYを読み込む(ローカル用)
+        # from dotenv import load_dotenv
+        # load_dotenv()
+
+        # OpenAIクライアントの初期化(ローカル用)
+        # client = OpenAI(timeout=10.0)
+        
+        # StreamlitのSecretsからAPIキーを読み込む
+        # アプリのSettings > Secretsで設定したキー名 (例: "OPENAI_API_KEY") を使います。
+        api_key = st.secrets["OPENAI_API_KEY"]
+
+        # 読み込んだAPIキーを使ってクライアントを初期化
+        client = OpenAI(api_key=api_key)
 
         # ユーザーメッセージの作成
         question_message = {
